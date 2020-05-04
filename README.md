@@ -1,9 +1,9 @@
 # concurrentprogramming2020
 2020 Concurrent Programming Conquering the Nodes (WIF3003 Assignment)
 
-/*
- *  General 
- */
+//////////////////////////////////////////////////////////////
+General
+//////////////////////////////////////////////////////////////
 Purpose: This repository created for the purpose of an online collaboration tool for the development of an assigned project. The wiki will be used to document the project and report of the project progress.
 
 Introduction: This is an assignment for WIF3003 Concurrent Programming. The purpose of this assignment is to assess the students' ability to apply adequate programming skills and use appropriate constructs in the Java language to solve a concurrent problem.
