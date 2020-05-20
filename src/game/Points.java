@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game;
-
+package connect.the.points;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 /**
  *
- * @author User
+ * @author Admin
  */
 public class Points {
     //points are Resource
@@ -34,11 +34,9 @@ public class Points {
         Set<Float> pointSet = Collections.synchronizedSet(new HashSet<Float>());
         
         //get Max_X and Max_Y
-       /* Grid grid = new Grid();
-        float MAX_X = grid.getMaxX();
-        float MAX_Y = grid.getMaxY(); */
-        float MAX_X = 10;
-        float MAX_Y = 10;
+        Grid grid = new Grid();
+        float MAX_X = grid.getMAX_X();
+        float MAX_Y = grid.getMAX_Y(); 
         
         //create random points
         int currentNum = 0;
@@ -50,30 +48,30 @@ public class Points {
             do{
                 x = (float) (Math.random()*(MAX_X-0+1)+0); //formula: Math.random()*(max-min+1)+min;
 
-            //verify the points
-            //if true, store in Set
-            //if false, loopAgain
-            if(verifyPoint(x)){
-                xloopAgain = false;
-            }else{
-                xloopAgain = true;
-            }
+                //verify the points
+                //if true, store in Set
+                //if false, loopAgain
+                if(verifyPoint(x)){
+                    xloopAgain = false;
+                }else{
+                    xloopAgain = true;
+                }
             }while(xloopAgain == true); //end of while loop for X
             
             //for y
             do{
                 y = (float) (Math.random()*(MAX_Y-0+1)+0); //formula: Math.random()*(max-min+1)+min;
 
-            //verify the points
-            //if true, store in Set
-            //if false, loopAgain
-            if(verifyPoint(x)){
-                yloopAgain = false;
-            }else{
-                yloopAgain = true;
-            }
+                //verify the points
+                //if true, store in Set
+                //if false, loopAgain
+                if(verifyPoint(x)){
+                    yloopAgain = false;
+                }else{
+                    yloopAgain = true;
+                }
             }while(yloopAgain == true); //end of while loop for X
-            }
+        }
     }
     
     //to verify created points
@@ -84,4 +82,5 @@ public class Points {
         //Not need check duplicate or not because HashSet doesn't allow duplicate entries.
         return true;
     }
+
 }
