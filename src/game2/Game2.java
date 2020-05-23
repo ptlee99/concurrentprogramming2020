@@ -40,6 +40,7 @@ public class Game2 {
         
         System.out.println(pointSet);
 */
+        System.out.println(p);
     }
     
 }
