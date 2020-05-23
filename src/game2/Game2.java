@@ -44,8 +44,6 @@ public class Game2 {
         }
         
         //create Player
-        
-        System.out.println(p);
     }
     
 }
