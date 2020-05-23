@@ -37,6 +37,10 @@ public class Coordinate {
     public void setY(float y){
     this.y = y;}
     
+    /*
+    Check the value of X and Y
+    if exists, point overlapped
+    */
     @Override
     public boolean equals(Object o){
         if(o == null || !(o instanceof Coordinate)) {System.out.println("False"); return false;}
@@ -48,7 +52,12 @@ public class Coordinate {
     public String toString() {
         return "("+x+", "+y+")";
     }
-
+    
+    /*
+    HashCode used to verify the index address of the item in the Set
+    If the X exists in the Set, the function equals() will be called to verify the Y
+    If Y exists, the Point is overlapped
+    */
     @Override
     public int hashCode() {
         return Objects.hash(x);
