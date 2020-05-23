@@ -8,6 +8,7 @@ package game2;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -20,27 +21,29 @@ public class Game2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int endOfLoop = 2;
-        Points p = new Points();
+        int n; //number of points
+        int m; //game timer
+        int t; //number of thread
         
-        for(int i=0; i<endOfLoop; i++){
+        //Game start
+        System.out.println("Hi! Ready to start the game?");
+        System.out.println("");
+        //input from user, n, m, t
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of points : ");
+        n = scanner.nextInt();
+        System.out.println("Enter the number of players: ");
+        t = scanner.nextInt();
+        System.out.println("How long you want the game to be? (seconds) ");
+        m = scanner.nextInt();
+        
+        //generate random points
+        Points p = new Points();
+        for(int i=0; i<n; i++){
         p.createPoint();
         }
-    /*   Set<Coordinate> pointSet  = Collections.synchronizedSet(new HashSet<>());
-       pointSet.add(new Coordinate(1,2));
-       pointSet.add(new Coordinate(2,3));
-       pointSet.add(new Coordinate(2,1));
-       pointSet.add(new Coordinate(0,4));
-       
-    
-       Iterator<Coordinate> itr = pointSet.iterator();
-        while(itr.hasNext()){
-            System.out.println("In HashSet: "+itr.next());
-        }
         
-        System.out.println(pointSet);
-*/
-        System.out.println(p);
+        //create Player
     }
     
 }

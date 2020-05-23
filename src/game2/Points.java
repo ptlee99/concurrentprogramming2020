@@ -29,29 +29,29 @@ public class Points {
     public void createPoint(){
        // x = (float)(Math.random()*(MAX_X+1));
        // y = (float)(Math.random()*(MAX_Y+1));
+       /*
+       By using Random Class, the boundary is set. 
+       Thus, the X and Y will not out of Grid.
+       */
        Random rand = new Random();
        x = rand.nextFloat()*MAX_X;
        y = rand.nextFloat()*MAX_Y;
+       
+       //Verify the overlap of the created point
        verifyPoint(x,y);
-     /*x = 2; y = 4;
-       verifyPoint(x,y);
-       x = 3; y = 4;
-       verifyPoint(x, y);
-       x = 1; y = 5;
-       verifyPoint(x, y);
-       x = 1; y = 7;
-       verifyPoint(x,y);
-        x = 1; y = 7;
-       verifyPoint(x,y);*/
     }
     
     public void verifyPoint(float x, float y){
-        //verify within the Grid or not
-     /*   if(x > MAX_X){System.out.println("X Out of Grid");}
-        else if(y > MAX_Y){System.out.println("Y Out of Grid");}
-        else{pointSet.add(new Coordinate(x,y));}*/
-       pointSet.add(new Coordinate(x,y));
-        System.out.println("VerifyPoint: "+pointSet);
+       /*
+       Set will not allows the duplicate data. 
+       Method equals() called in Coordinate Class.
+       No overlapping occur if add() return true, vice verse
+       Return true for add() means the data inserted into the Set
+       */
+       if(pointSet.add(new Coordinate(x,y)))
+        System.out.println("Point ("+x+", "+y+") created.");
+       else
+        System.out.println("Point ("+x+", "+y+") failed to create.");   
     }
     
     public void displaySet(){
