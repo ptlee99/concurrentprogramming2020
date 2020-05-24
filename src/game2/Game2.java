@@ -22,25 +22,34 @@ public class Game2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int n; //number of points
+        int n=5; //number of points
         int m; //game timer
         int t; //number of thread
-        
+        /**
         //Game start
         System.out.println("Hi! Ready for the game?");
         System.out.println("");
         //input from user, n, m, t
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the number of points : ");
-        n = scanner.nextInt();
-        System.out.println("Enter the number of players: ");
-        t = scanner.nextInt();
+        
+        //check if n > t
+        do{
+            System.out.println("Enter the number of points : ");
+            n = scanner.nextInt();
+            System.out.println("Enter the number of players: ");
+            t = scanner.nextInt();
+            if(n<t){
+                System.out.println("Number of points should be greater than the number of players.");
+            }
+        }
+        while(n<t);
+        
         System.out.println("How long you want the game to be? (seconds) ");
         m = scanner.nextInt();
         
         //start timer
         GameTimer gt = new GameTimer(10);
-        System.out.println("Game Start!"+new Date());
+        System.out.println("Game Start!"+new Date());**/
         
         //generate random points
         Points p = new Points();
@@ -48,7 +57,14 @@ public class Game2 {
         p.createPoint();
         }
         
+        //get created points
+        Set<Coordinate> pointSet = new HashSet<>();
+        pointSet = p.getSet();
+        
         //create Player
+        Player player = new Player("Lee", pointSet);
+        player.run();
+        //p.displaySet();
     }
     
 }

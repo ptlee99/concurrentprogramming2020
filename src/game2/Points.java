@@ -60,4 +60,8 @@ public class Points {
            System.out.println(itr.next());
         }
     }
+    
+    public Set<Coordinate> getSet(){
+        return this.pointSet;
+    }
 }
