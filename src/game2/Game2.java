@@ -27,7 +27,7 @@ public class Game2 {
         int n=10; //number of points
         int m; //game timer
         int t; //number of thread
-        /**
+        
         //Game start
         System.out.println("Hi! Ready for the game?");
         System.out.println("");
@@ -51,7 +51,7 @@ public class Game2 {
         
         //start timer
         GameTimer gt = new GameTimer(10);
-        System.out.println("Game Start!"+new Date());**/
+        System.out.println("Game Start!"+new Date());
         
         //generate random points
         Points p = new Points();
@@ -64,9 +64,9 @@ public class Game2 {
         pointSet = p.getSet();
         
         //players join the game
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        ExecutorService executor = Executors.newFixedThreadPool(t);
         
-        for(int i = 1; i <= 2; i++){ //replace 5 with t
+        for(int i = 1; i <= t; i++){ 
             Player players = new Player("P" + i, pointSet);
             players.createThread(); 
             executor.execute(players);

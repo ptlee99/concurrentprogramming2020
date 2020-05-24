@@ -23,7 +23,7 @@ public class Player implements Runnable {
     private Set<Coordinate> playerPoints = Collections.synchronizedSet(new HashSet<>()); //points taken by the player
     private static Set<Coordinate> pointsTaken = Collections.synchronizedSet(new HashSet<>()); //points taken by all players
     private Object pt; //point that is taken
-    private int attempt = 1;
+    private int attempt = 0; //number of attempts
 
     private final Lock lock = new ReentrantLock();
     
@@ -37,7 +37,6 @@ public class Player implements Runnable {
         Thread thread = new Thread(threadName);
         thread.start();
     }
-    
     
     public void pickPoint(){
         lock.lock();
@@ -79,7 +78,7 @@ public class Player implements Runnable {
     @Override
     public void run() {
         GameTimer gt = new GameTimer();
-        while(attempt <= 2){
+        while(attempt < 20 && !Thread.interrupted()){
             if(gt.getIsTimeUp() == false){
                 System.out.println("SAVE ME");
                 System.out.println("Attempt from run : " + attempt + " by " +Thread.currentThread().getName());
@@ -87,6 +86,7 @@ public class Player implements Runnable {
             }
             
         }
+        Thread.currentThread().interrupt();
         displayResults();
     }
 }

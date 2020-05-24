@@ -35,7 +35,9 @@ public class Points {
        */
        Random rand = new Random();
        x = rand.nextFloat()*MAX_X;
+       x = (float)(Math.round(x*100.0)/100.0);
        y = rand.nextFloat()*MAX_Y;
+       y = (float)(Math.round(x*100.0)/100.0);
        
        //Verify the overlap of the created point
        verifyPoint(x,y);
