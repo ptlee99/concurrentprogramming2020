@@ -5,6 +5,9 @@
  */
 package game2;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -15,13 +18,17 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Player implements Runnable {
     private String threadName;       //the name of the player
-    private Set<Float> pointSet;
+    private Set<Coordinate> pointSet; 
+    //create a set of player taken points
+    private Object startPoint;
+    private Object endPoint;
 
     private final Lock lock = new ReentrantLock();
     
-    public Player(String threadName, Set<Float> pointSet) {
+    public Player(String threadName, Set<Coordinate> pointSet) {
         this.threadName = threadName;
         this.pointSet = pointSet;
+        
     }
 
     //create the players
@@ -32,21 +39,47 @@ public class Player implements Runnable {
     
     
     public boolean pickPoint(){
-        
+        lock.lock();
         //get Max_X and Max_Y
         Grid grid = new Grid();
         float MAX_X = grid.getMAX_X();
         float MAX_Y = grid.getMAX_Y(); 
-        //Points point = new Points(); get created points (set)
+        
+        Points point = new Points(); //get created points (set)
+        System.out.println(pointSet);
         
         boolean pointTaken = false;
         
         //randomly picks 2 points from the set in Points object
-        /**float x1 = (float) Math.random();
-        float y1 = (float) Math.random();**/
+        int size = pointSet.size();
+        int p1 = new Random().nextInt(size); 
+        //int p2 = new Random().nextInt(size); 
+        int i = 0;
+        //int j = 0;
         
-        
-        
+        for(Object obj : pointSet){
+            if (i == p1){
+                startPoint = obj;
+                try{
+                    boolean isRemove = pointSet.remove(obj);
+                    System.out.println(isRemove);
+                }
+                catch(Exception e){e.printStackTrace();}
+                
+            }
+        i++;
+        }
+       
+        /**for(Object obj : pointSet){
+            if (j == p2){
+                endPoint = obj;
+                
+            }
+        j++;
+        }**/
+        System.out.println("Start point: "  + startPoint);
+        //System.out.println("End point: "  + endPoint);
+        lock.unlock();
         //points.add(x,y);
         return pointTaken;
         
@@ -58,7 +91,7 @@ public class Player implements Runnable {
     
     @Override
     public void run() {
-        
-        //players continue to play if less than m seconds and 20 attempts
+        pickPoint();
+       // displayResults();
     }
 }
