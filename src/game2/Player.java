@@ -21,14 +21,15 @@ public class Player implements Runnable {
     private String threadName;            //the name of the player
     private Set<Coordinate> pointSet;     //points created
     private Set<Coordinate> playerPoints = Collections.synchronizedSet(new HashSet<>()); //points taken by the player
+    private static Set<Coordinate> pointsTaken = Collections.synchronizedSet(new HashSet<>()); //points taken by all players
     private Object pt; //point that is taken
+    private int attempt = 1;
 
     private final Lock lock = new ReentrantLock();
     
     public Player(String threadName, Set<Coordinate> pointSet) {
         this.threadName = threadName;
         this.pointSet = pointSet;
-        
     }
 
     //create the players
@@ -38,41 +39,37 @@ public class Player implements Runnable {
     }
     
     
-    public boolean pickPoint(){
+    public void pickPoint(){
         lock.lock();
-        
-        Points point = new Points(); //get created points (set)
-        System.out.println(pointSet);
-        
-        boolean pointTaken = false;
-        
-        //randomly picks 1 point from the set in Points object
-        int size = pointSet.size();
-        int p1 = new Random().nextInt(size);  
-        int i = 0;
-        
-        Iterator setItr = pointSet.iterator();
-        while(setItr.hasNext()){
-            Object item = new Object();
-            item = setItr.next();
-            if(i == p1){
-                pt = item;
-                setItr.remove(); //removes point from available points set
-                playerPoints.add((Coordinate) pt); //add point to the player
-                System.out.println("playerPoints = " + playerPoints);
-                pointTaken = true;
-                
+        try {
+   
+            //randomly picks 1 point from the set in Points object
+            int size = pointSet.size(); //get the index
+            int p1 = new Random().nextInt(size);
+            int i = 0;
+            
+            Iterator setItr = pointSet.iterator();
+            while(setItr.hasNext()){
+                Object item = new Object();
+                item = setItr.next();
+                if(i == p1){
+                    pt = item;
+                    if(pointsTaken.add((Coordinate) pt)){
+                        playerPoints.add((Coordinate) pt); //add point to the player
+                    }
+                     else{
+                        attempt++;
+                        System.out.println("Attempt : " + attempt);
+                    }
+                }
+               
+                i++;
             }
-            i++;
+            
+            System.out.println("Point "  + pt + " taken by " + threadName);
+        } finally {
+            lock.unlock();          
         }
-        
-       
-        System.out.println("Point "  + pt + " taken by " + threadName);
-        System.out.println(pointSet);
-        lock.unlock();
-        
-        return pointTaken;
-        
     }
     
     public void displayResults(){
@@ -82,8 +79,13 @@ public class Player implements Runnable {
     @Override
     public void run() {
         GameTimer gt = new GameTimer();
-        while(gt.getIsTimeUp() == false){
-            pickPoint();
+        while(attempt <= 2){
+            if(gt.getIsTimeUp() == false){
+                System.out.println("SAVE ME");
+                System.out.println("Attempt from run : " + attempt + " by " +Thread.currentThread().getName());
+                pickPoint();
+            }
+            
         }
         displayResults();
     }
