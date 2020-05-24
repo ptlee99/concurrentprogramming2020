@@ -6,6 +6,7 @@
 package game2;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -26,7 +27,7 @@ public class Game2 {
         int t; //number of thread
         
         //Game start
-        System.out.println("Hi! Ready to start the game?");
+        System.out.println("Hi! Ready for the game?");
         System.out.println("");
         //input from user, n, m, t
         Scanner scanner = new Scanner(System.in);
@@ -36,6 +37,10 @@ public class Game2 {
         t = scanner.nextInt();
         System.out.println("How long you want the game to be? (seconds) ");
         m = scanner.nextInt();
+        
+        //start timer
+        GameTimer gt = new GameTimer(10);
+        System.out.println("Game Start!"+new Date());
         
         //generate random points
         Points p = new Points();
