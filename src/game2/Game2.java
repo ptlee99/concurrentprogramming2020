@@ -11,6 +11,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  *
@@ -22,7 +24,7 @@ public class Game2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int n=5; //number of points
+        int n=20; //number of points
         int m; //game timer
         int t; //number of thread
         /**
@@ -61,10 +63,17 @@ public class Game2 {
         Set<Coordinate> pointSet = new HashSet<>();
         pointSet = p.getSet();
         
-        //create Player
-        Player player = new Player("Lee", pointSet);
-        player.run();
-        //p.displaySet();
+        //players join the game
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+        
+        for(int i = 1; i <= 5; i++){ //replace 5 with t
+            Player players = new Player("P" + i, pointSet);
+            players.createThread(); 
+            executor.execute(players);
+            System.out.println("Player " + i + " joins the game.");
+            //players.run();
+        }
+        executor.shutdown();
     }
     
 }
