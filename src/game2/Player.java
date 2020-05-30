@@ -55,17 +55,15 @@ public class Player implements Runnable {
                     pt = item;
                     if(pointsTaken.add((Coordinate) pt)){
                         playerPoints.add((Coordinate) pt); //add point to the player
+                        System.out.println("Point "  + pt + " taken by " + threadName);
                     }
                      else{
                         attempt++;
                         System.out.println("Attempt : " + attempt);
                     }
                 }
-               
                 i++;
             }
-            
-            System.out.println("Point "  + pt + " taken by " + threadName);
         } finally {
             lock.unlock();          
         }
