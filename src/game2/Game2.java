@@ -24,7 +24,7 @@ public class Game2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int n=10; //number of points
+        int n; //number of points
         int m; //game timer
         int t; //number of thread
         
@@ -50,7 +50,7 @@ public class Game2 {
         m = scanner.nextInt();
         
         //start timer
-        GameTimer gt = new GameTimer(10);
+        GameTimer gt = new GameTimer(m);
         System.out.println("Game Start!"+new Date());
         
         //generate random points
