@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game2;
+package Game2;
 
 import java.util.Date;
 import java.util.Timer;
@@ -34,7 +34,7 @@ public class GameTimer{
         @Override
         public void run() {
             isTimeUp = true;
-            System.out.println("Time's up!"+new Date());
+            System.out.println("Time's up!\n"+new Date());
             timer.cancel();
         }
     }

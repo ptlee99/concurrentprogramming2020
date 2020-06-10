@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game2;
+package Game2;
 
-import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -37,7 +36,7 @@ public class Points {
        x = rand.nextFloat()*MAX_X;
        x = (float)(Math.round(x*100.0)/100.0);
        y = rand.nextFloat()*MAX_Y;
-       y = (float)(Math.round(x*100.0)/100.0);
+       y = (float)(Math.round(y*100.0)/100.0);
        
        //Verify the overlap of the created point
        verifyPoint(x,y);
