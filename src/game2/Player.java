@@ -71,6 +71,8 @@ public class Player implements Runnable {
 
     public void displayResults() {
         System.out.println(threadName + " has collected these points: " + playerPoints);
+        LineWindow line = new LineWindow(playerPoints);
+        
     }
 
     @Override

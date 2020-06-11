@@ -8,6 +8,7 @@ package Game2;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JFrame;
 
 /**
  *

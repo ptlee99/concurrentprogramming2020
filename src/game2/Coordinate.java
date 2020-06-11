@@ -6,6 +6,7 @@
 package Game2;
 
 import java.util.Objects;
+import javax.swing.JFrame;
 
 /**
  * Purpose ** Data type for coordinate (x,y) ** Collections to put inside
@@ -14,11 +15,14 @@ import java.util.Objects;
  *
  * @author Lee Peh Ting
  */
-public class Coordinate {
+public class Coordinate{
 
     private float x;
     private float y;
 
+    public Coordinate(){
+      
+    }
     public Coordinate(float x, float y) {
         this.x = x;
         this.y = y;
