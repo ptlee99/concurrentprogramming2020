@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Game2;
+package game2;
 
 import java.util.Objects;
-import javax.swing.JFrame;
 
 /**
  * Purpose ** Data type for coordinate (x,y) ** Collections to put inside
