@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Game2;
+package game2;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -48,7 +48,7 @@ public class Player implements Runnable {
             int p1 = new Random().nextInt(size);
             int i = 0;
 
-            Iterator setItr = pointSet.iterator();
+            Iterator<Coordinate> setItr = pointSet.iterator();
             while (setItr.hasNext()) {
                 Object item = new Object();
                 item = setItr.next();
@@ -59,7 +59,7 @@ public class Player implements Runnable {
                         System.out.println("Point " + pt + " taken by " + threadName);
                     } else {
                         attempt++;
-                        System.out.println("Attempt : " + attempt);
+                        //System.out.println("Attempt : " + attempt);
                     }
                 }
                 i++;
@@ -71,7 +71,7 @@ public class Player implements Runnable {
 
     public void displayResults() {
         System.out.println(threadName + " has collected these points: " + playerPoints);
-        LineWindow line = new LineWindow(playerPoints);
+        //LineWindow line = new LineWindow(playerPoints);
         
     }
 
@@ -80,8 +80,8 @@ public class Player implements Runnable {
         GameTimer gt = new GameTimer();
         while (attempt < 20 && !Thread.interrupted()) {
             if (gt.getIsTimeUp() == false) {
-                System.out.println("SAVE ME");
-                System.out.println("Attempt from run : " + attempt + " by " + Thread.currentThread().getName());
+                //System.out.println("SAVE ME");
+                //System.out.println("Attempt from run : " + attempt + " by " + Thread.currentThread().getName());
                 pickPoint();
             }
 
