@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Game2;
+package game2;
 
 import static java.lang.Integer.parseInt;
 import java.util.Date;
@@ -50,7 +50,6 @@ public class Game2 extends Application {
         grid.setVgap(18);
         grid.setHgap(15);
         
-        
         Text scenetitle = new Text("Welcome!");
         scenetitle.setId("welcome-text");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -78,7 +77,7 @@ public class Game2 extends Application {
         Label timerLabel = new Label("Duration");
         GridPane.setConstraints(timerLabel, 0, 3);
 
-        //Name Input
+        //Time Input
         TextField timerInput = new TextField();
         timerInput.setPromptText("Seconds");
         GridPane.setConstraints(timerInput, 1, 3);
@@ -102,8 +101,12 @@ public class Game2 extends Application {
             n = parseInt(pointInput.getText());
             m = parseInt(timerInput.getText());
             t = parseInt(playerInput.getText());
+<<<<<<< Updated upstream
 
             //start timer
+=======
+            
+>>>>>>> Stashed changes
             GameTimer gt = new GameTimer(m);
             System.out.println("Game Start!" + new Date());
 
@@ -127,8 +130,15 @@ public class Game2 extends Application {
                 System.out.println("Player " + i + " joins the game.");
             }
             executor.shutdown();
+<<<<<<< Updated upstream
             
             
+=======
+
+            if (gt.getIsTimeUp()) {
+                window.close();
+            }
+>>>>>>> Stashed changes
         });
     }
 
