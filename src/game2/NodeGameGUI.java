@@ -112,7 +112,7 @@ public class NodeGameGUI extends Application {
             System.out.println("Game Start!" + new Date());
 
             StartGame start = new StartGame(n, m, t);
-            numEdge = start.run();
+            numEdge = start.getResult();
         });
 
     }
