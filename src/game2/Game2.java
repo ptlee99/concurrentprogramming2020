@@ -101,12 +101,8 @@ public class Game2 extends Application {
             n = parseInt(pointInput.getText());
             m = parseInt(timerInput.getText());
             t = parseInt(playerInput.getText());
-<<<<<<< Updated upstream
 
             //start timer
-=======
-            
->>>>>>> Stashed changes
             GameTimer gt = new GameTimer(m);
             System.out.println("Game Start!" + new Date());
 
@@ -130,15 +126,8 @@ public class Game2 extends Application {
                 System.out.println("Player " + i + " joins the game.");
             }
             executor.shutdown();
-<<<<<<< Updated upstream
             
             
-=======
-
-            if (gt.getIsTimeUp()) {
-                window.close();
-            }
->>>>>>> Stashed changes
         });
     }
 
