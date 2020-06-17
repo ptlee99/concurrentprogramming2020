@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Game2;
+package game2;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -19,6 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Player implements Runnable {
 
+<<<<<<< Updated upstream
     private final String threadName;            //the name of the player
     private final Set<Coordinate> pointSet;     //points created
     private final Set<Coordinate> playerPoints = Collections.synchronizedSet(new HashSet<>()); //points taken by the player
@@ -26,17 +27,27 @@ public class Player implements Runnable {
     private Object pt1; //point 1 that is taken
     private Object pt2; //point 2 that is taken
     private int attempt = 0; //number of attempts
+=======
+    private final String threadName; // the name of the player
+    private final Set<Coordinate> pointSet; // points created
+    private final Set<Coordinate> playerPoints = Collections.synchronizedSet(new HashSet<>()); // points taken by the
+                                                                                               // player
+    private static Set<Coordinate> pointsTaken = Collections.synchronizedSet(new HashSet<>()); // points taken by all
+                                                                                               // players
+    private Object pt; // point that is taken
+    private int attempt = 0; // number of attempts
+>>>>>>> Stashed changes
 
     private final Lock lock = new ReentrantLock();
 
-    public Player(String threadName, Set<Coordinate> pointSet) {
+    public Player(final String threadName, final Set<Coordinate> pointSet) {
         this.threadName = threadName;
         this.pointSet = pointSet;
     }
 
-    //create the players
+    // create the players
     public void createThread() {
-        Thread thread = new Thread(threadName);
+        final Thread thread = new Thread(threadName);
         thread.start();
     }
 
@@ -44,17 +55,25 @@ public class Player implements Runnable {
         lock.lock();
         try {
 
+<<<<<<< Updated upstream
             //randomly picks 1 point from the set in Points object
             int size = pointSet.size(); //get the index
             int p1 = new Random().nextInt(size);
             int p2 = new Random().nextInt(size);
             int i = 0, j = 0;
+=======
+            // randomly picks 1 point from the set in Points object
+            final int size = pointSet.size(); // get the index
+            final int p1 = new Random().nextInt(size);
+            int i = 0;
+>>>>>>> Stashed changes
 
-            Iterator setItr = pointSet.iterator();
+            Iterator<Coordinate> setItr = pointSet.iterator();
             while (setItr.hasNext()) {
                 Object item = new Object();
                 item = setItr.next();
                 if (i == p1) {
+<<<<<<< Updated upstream
                     pt1 = item;
                     if (pointsTaken.add((Coordinate) pt1)) {
                         playerPoints.add((Coordinate) pt1); //add point to the player
@@ -74,6 +93,12 @@ public class Player implements Runnable {
                             }
                             j++;
                         }
+=======
+                    pt = item;
+                    if (pointsTaken.add((Coordinate) pt)) {
+                        playerPoints.add((Coordinate) pt); // add point to the player
+                        System.out.println("Point " + pt + " taken by " + threadName);
+>>>>>>> Stashed changes
                     } else {
                         attempt++;
                         //System.out.println("Attempt : " + attempt);
@@ -92,11 +117,15 @@ public class Player implements Runnable {
 
     @Override
     public void run() {
-        GameTimer gt = new GameTimer();
+        final GameTimer gt = new GameTimer();
         while (attempt < 20 && !Thread.interrupted()) {
             if (gt.getIsTimeUp() == false) {
                 //System.out.println("SAVE ME");
+<<<<<<< Updated upstream
                 // System.out.println("Attempt from run : " + attempt + " by " + Thread.currentThread().getName());
+=======
+                //System.out.println("Attempt from run : " + attempt + " by " + Thread.currentThread().getName());
+>>>>>>> Stashed changes
                 pickPoint();
             }
 
