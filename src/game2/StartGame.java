@@ -43,7 +43,7 @@ public class StartGame {
         return numEdge;
     }
 
-    public ArrayList<Integer> run() {
+    public ArrayList<Integer> getResult() {
         createPoint();
         return joinGame();
     }
