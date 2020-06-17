@@ -26,10 +26,7 @@ public class Points {
     private final Set<Coordinate> pointSet  = Collections.synchronizedSet(new HashSet<>());
     
     public void createPoint(){
-       // x = (float)(Math.random()*(MAX_X+1));
-       // y = (float)(Math.random()*(MAX_Y+1));
-       /*
-       By using Random Class, the boundary is set. 
+       /*By using Random Class, the boundary is set. 
        Thus, the X and Y will not out of Grid.
        */
        Random rand = new Random();
