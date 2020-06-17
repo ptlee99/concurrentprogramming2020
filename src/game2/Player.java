@@ -46,8 +46,8 @@ public class Player implements Runnable {
         try {
 
             // randomly picks 1 point from the set in Points object
-            int size = pointSet.size(); // get the index
-            int p1 = new Random().nextInt(size);
+            int size = pointSet.size();
+            int p1 = new Random().nextInt(size); // get the index
             int i = 0;
 
             Iterator<Coordinate> setItr = pointSet.iterator();
