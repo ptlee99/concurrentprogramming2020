@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Game2;
+package game2;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
@@ -13,8 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 /**
  *
@@ -22,11 +19,16 @@ import javax.swing.JPanel;
  */
 public class LineWindow extends JComponent {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    
     List<Coordinate> listConverted;
     private Set<Coordinate> pointTakenByPlayer;
     
-    LineWindow(Set<Coordinate> pointTakenByPlayer) {
-        this.pointTakenByPlayer = pointTakenByPlayer;
+    LineWindow(Set<Coordinate> points) {
+        this.pointTakenByPlayer = points;
         this.listConverted = new ArrayList<>(pointTakenByPlayer);
 
     }
