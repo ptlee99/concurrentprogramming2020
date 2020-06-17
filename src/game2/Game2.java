@@ -3,14 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Game2;
+package game2;
 
 import static java.lang.Integer.parseInt;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,11 +23,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javax.swing.JFrame;
 
 /**
  *
@@ -119,29 +114,6 @@ public class Game2 extends Application {
                 m = parseInt(timerInput.getText());
                 t = parseInt(playerInput.getText());
 
-                /*                //Game start
-       System.out.println("Hi! Ready for the game?");
-        System.out.println("");
-        //Game start
-        System.out.println("Hi! Ready for the game?");
-        System.out.println("");
-        //input from user, n, m, t
-        Scanner scanner = new Scanner(System.in);
-
-        //check if n > t
-        do {
-            System.out.println("Enter the number of points : ");
-            n = scanner.nextInt();
-            System.out.println("Enter the number of players: ");
-            t = scanner.nextInt();
-            if (n < t) {
-                System.out.println("Number of points should be greater than the number of players.");
-            }
-        } while (n < t);
-
-        System.out.println("How long you want the game to be? (seconds) ");
-        m = scanner.nextInt();
-                 */
                 //start timer
                 GameTimer gt = new GameTimer(m);
                 System.out.println("Game Start!" + new Date());
@@ -166,6 +138,10 @@ public class Game2 extends Application {
                     System.out.println("Player " + i + " joins the game.");
                 }
                 executor.shutdown();
+
+                if (gt.getIsTimeUp() == true) {
+                    window.close();
+                }
             }
         });
     }
