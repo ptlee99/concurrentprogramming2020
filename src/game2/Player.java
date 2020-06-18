@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.Callable;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -17,7 +18,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  * @author User
  */
-public class Player implements Runnable {
+public class Player implements Callable<Integer> {
 
     private String threadName; // the name of the player
     private Set<Coordinate> pointSet; // points created
@@ -107,7 +108,7 @@ public class Player implements Runnable {
     }
 
     @Override
-    public void run() {
+    public Integer call() throws Exception {
         GameTimer gt = new GameTimer();
         while (attempt < 20 && !Thread.interrupted()) {
             if (gt.getIsTimeUp() == false) {
@@ -121,5 +122,6 @@ public class Player implements Runnable {
         createEdge();
         Thread.currentThread().interrupt();
         displayResults();
+        return this.getNumEdge();
     }
 }
