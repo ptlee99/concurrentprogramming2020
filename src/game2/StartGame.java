@@ -16,7 +16,7 @@ public class StartGame {
         this.numThread = t;
     }
 
-    public Set<Coordinate> createPoint() {
+    public Set<Coordinate> createPoints() {
         //generate random points
         Points p = new Points();
         for (int i = 0; i < numPoints; i++) {
@@ -30,10 +30,11 @@ public class StartGame {
     public ArrayList<Integer> joinGame() {
         //players join the game
         ExecutorService executor = Executors.newFixedThreadPool(numThread);
+        Set<Coordinate> pointSet = this.createPoints();
         ArrayList<Integer> numEdge = new ArrayList<>();
 
         for (int i = 1; i <= numThread; i++) {
-            Player players = new Player("P" + i, this.createPoint());
+            Player players = new Player("P" + i, pointSet);
             players.createThread();
             executor.execute(players);
             System.out.println("Player " + i + " joins the game.");
@@ -44,7 +45,6 @@ public class StartGame {
     }
 
     public ArrayList<Integer> getResult() {
-        createPoint();
         return joinGame();
     }
 }
