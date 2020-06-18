@@ -1,14 +1,18 @@
 package game2;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class StartGame {
-    int numPoints; //number of points
-    int gameTimer; //game timer
-    int numThread; //number of thread
+    int numPoints; // number of points
+    int gameTimer; // game timer
+    int numThread; // number of thread
+    ArrayList<Integer> numEdge = new ArrayList<>();
 
     public StartGame(int n, int m, int t) {
         this.numPoints = n;
@@ -17,34 +21,41 @@ public class StartGame {
     }
 
     public Set<Coordinate> createPoints() {
-        //generate random points
+        // generate random points
         Points p = new Points();
         for (int i = 0; i < numPoints; i++) {
             p.createPoint();
         }
 
-        //get created points
+        // get created points
         return p.getSet();
     }
 
-    public ArrayList<Integer> joinGame() {
-        //players join the game
+    public void joinGame() {
+        // players join the game
         ExecutorService executor = Executors.newFixedThreadPool(numThread);
         Set<Coordinate> pointSet = this.createPoints();
-        ArrayList<Integer> numEdge = new ArrayList<>();
+        List<Future<Integer>> numEdgeList = new ArrayList<>();
 
         for (int i = 1; i <= numThread; i++) {
-            Player players = new Player("P" + i, pointSet);
-            players.createThread();
-            executor.execute(players);
+            Future<Integer> numEdge = executor.submit(new Player("P" + i, pointSet));
             System.out.println("Player " + i + " joins the game.");
-            numEdge.add(players.getNumEdge());
+            numEdgeList.add(numEdge);
+        }
+
+        for (Future<Integer> future : numEdgeList) {
+            try {
+                int edges = future.get();
+                numEdge.add(edges);
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
         }
         executor.shutdown();
-        return numEdge;
     }
 
     public ArrayList<Integer> getResult() {
-        return joinGame();
+        joinGame();
+        return numEdge;
     }
 }
