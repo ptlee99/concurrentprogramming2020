@@ -76,8 +76,10 @@ public class startGUI {
 
             StartGame start = new StartGame(n, m, t);
             numEdge = start.getResult();
+            System.out.println(numEdge);
 
             grid.getScene().getWindow().hide();
+            ResultGUI.display(numEdge);
         });
     }
 
