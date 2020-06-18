@@ -40,10 +40,7 @@ public class NodeGameGUI extends Application {
         // put the scene into the window
         window.setScene(scene1);
         scene1.getStylesheets().add(NodeGameGUI.class.getResource("Game.css").toExternalForm());
-
-        //get number of edges
-        numEdge = start.getNumEdge();
-
+        
         // show the window
         window.show();
 
