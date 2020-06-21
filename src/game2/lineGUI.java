@@ -5,7 +5,6 @@
  */
 package game2;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import javafx.geometry.Insets;
