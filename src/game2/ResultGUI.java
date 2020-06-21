@@ -6,7 +6,6 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -75,37 +74,10 @@ public class ResultGUI {
 
         }
         grid.add(group, 0, loop);
-=======
-
-import javafx.geometry.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-
-public class ResultGUI {
-    private static GridPane grid;
-    
-    public static void display(ArrayList<Integer> result) {
-        grid = new GridPane();
-        grid.setPadding(new Insets(100, 100, 100, 100));
-        grid.setVgap(18);
-        grid.setHgap(15);
-        
-        Label label = new Label();
-        label.setText("Game Result: ");
-        label.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        GridPane.setConstraints(label, 0, 0);
-
-        int loop = 1;
-        for (int i = 0; i < result.size(); i++) {
-            grid.add(new Label("P" + (i + 1) + " has created " + result.get(i) + " edges.\n"), 0, loop);
-           loop++;
-        }
->>>>>>> 2d24d59cee2f5f4126d8e56fac1456eebc2e0fe8
 
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Node Game Result");
-<<<<<<< HEAD
 
         Button btn = new Button("End Game");
         GridPane.setConstraints(btn, 1, loop+1);
@@ -115,17 +87,6 @@ public class ResultGUI {
         grid.setAlignment(Pos.CENTER);
         Scene scene = new Scene(grid);
         scene.getStylesheets().add(NodeGameGUI.class.getResource("Result.css").toExternalForm());
-=======
-        
-        Button btn = new Button("End Game");
-        GridPane.setConstraints(btn, 0, loop);
-        btn.setOnAction(e -> window.close());
-
-        grid.getChildren().addAll(label, btn);
-        grid.setAlignment(Pos.CENTER);
-        Scene scene = new Scene(grid);
-        scene.getStylesheets().add(NodeGameGUI.class.getResource("Game.css").toExternalForm());
->>>>>>> 2d24d59cee2f5f4126d8e56fac1456eebc2e0fe8
         window.setScene(scene);
         window.showAndWait();
     }
