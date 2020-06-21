@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Game2;
+package game2;
 
-import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,23 +20,20 @@ import java.util.Set;
 public class Points {
     private float x;
     private float y;
-    private final float MAX_X = 10;
-    private final float MAX_Y = 10;
+    private final float MAX_X = 300;
+    private final float MAX_Y = 300;
     
     private final Set<Coordinate> pointSet  = Collections.synchronizedSet(new HashSet<>());
     
     public void createPoint(){
-       // x = (float)(Math.random()*(MAX_X+1));
-       // y = (float)(Math.random()*(MAX_Y+1));
-       /*
-       By using Random Class, the boundary is set. 
+       /*By using Random Class, the boundary is set. 
        Thus, the X and Y will not out of Grid.
        */
        Random rand = new Random();
        x = rand.nextFloat()*MAX_X;
        x = (float)(Math.round(x*100.0)/100.0);
        y = rand.nextFloat()*MAX_Y;
-       y = (float)(Math.round(x*100.0)/100.0);
+       y = (float)(Math.round(y*100.0)/100.0);
        
        //Verify the overlap of the created point
        verifyPoint(x,y);
