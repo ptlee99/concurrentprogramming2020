@@ -121,6 +121,6 @@ public class Player implements Callable<EdgeList> {
         createEdge();
         Thread.currentThread().interrupt();
         displayResults();
-        return new EdgeList<Integer, Set>(this.getNumEdge(), this.edgeSets);
+        return new EdgeList(this.getNumEdge(), this.edgeSets);
     }
 }
