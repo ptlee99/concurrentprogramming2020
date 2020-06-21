@@ -12,11 +12,11 @@ import java.util.Set;
  * under class Player
  * @author User
  */
-public class EdgeList<Integer, Set> {
+public class EdgeList {
     public final Integer numEdge;
-    public final Set edge;
+    public final Set<Edge> edge;
         
-    public EdgeList(Integer num, Set e){
+    public EdgeList(Integer num, Set<Edge> e){
         this.edge = e;
         this.numEdge = num;  
     }
@@ -25,7 +25,7 @@ public class EdgeList<Integer, Set> {
         return this.numEdge;
     }
     
-    public Set getSet(){
+    public Set<Edge> getSet(){
         return this.edge;
     }
 }
