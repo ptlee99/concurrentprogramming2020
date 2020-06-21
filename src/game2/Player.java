@@ -13,12 +13,13 @@ import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import javafx.scene.shape.Line;
 
 /**
  *
  * @author User
  */
-public class Player implements Callable<Integer> {
+public class Player implements Callable<EdgeList> {
 
     private String threadName; // the name of the player
     private Set<Coordinate> pointSet; // points created
@@ -96,6 +97,12 @@ public class Player implements Callable<Integer> {
                     p2 = pointSet.next();
                     pointSet.remove();
                     edgeSets.add(new Edge(p1, p2));
+                    //draw an edge
+                    Line line = new Line();
+                    line.setStartX(p1.getX());
+                    line.setStartY(p1.getY());
+                    line.setEndX(p2.getX());
+                    line.setEndY(p2.getY());
                 }
             }
         } finally {
@@ -108,13 +115,10 @@ public class Player implements Callable<Integer> {
     }
 
     @Override
-    public Integer call() throws Exception {
+    public EdgeList call() throws Exception {
         GameTimer gt = new GameTimer();
         while (attempt < 20 && !Thread.interrupted()) {
             if (gt.getIsTimeUp() == false) {
-                // System.out.println("SAVE ME");
-                // System.out.println("Attempt from run : " + attempt + " by " +
-                // Thread.currentThread().getName());
                 pickPoint();
             }
 
@@ -122,6 +126,6 @@ public class Player implements Callable<Integer> {
         createEdge();
         Thread.currentThread().interrupt();
         displayResults();
-        return this.getNumEdge();
+        return new EdgeList<Integer, Set>(this.getNumEdge(), this.edgeSets);
     }
 }

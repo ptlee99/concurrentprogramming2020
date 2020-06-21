@@ -15,13 +15,13 @@ import java.util.Set;
  * Purpose:
  * ** Driver to create points
  * 
- * @author Lee Peh Ting
+ * @author Users
  */
 public class Points {
     private float x;
     private float y;
-    private final float MAX_X = 10;
-    private final float MAX_Y = 10;
+    private final float MAX_X = 1000;
+    private final float MAX_Y = 1000;
     
     private final Set<Coordinate> pointSet  = Collections.synchronizedSet(new HashSet<>());
     

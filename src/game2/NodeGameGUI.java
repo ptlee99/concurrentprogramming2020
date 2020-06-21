@@ -35,7 +35,7 @@ public class NodeGameGUI extends Application {
         startGUI start = new startGUI();
 
         // put the grid into the scene
-        Scene scene1 = new Scene(start.getGrid(), 500, 427);
+        Scene scene1 = new Scene(start.getGrid(), 500, 500);
 
         // put the scene into the window
         window.setScene(scene1);

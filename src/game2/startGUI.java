@@ -10,6 +10,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.control.*;
 import javafx.geometry.*;
+import javafx.scene.paint.Color;
 
 public class startGUI {
     Button button;
@@ -69,7 +70,17 @@ public class startGUI {
             int n = parseInt(pointInput.getText()); // number of points
             int m = parseInt(timerInput.getText()); // game timer
             int t = parseInt(playerInput.getText()); // number of thread
-
+            
+            //If n << t
+            if(t>n){
+                System.out.println("t>n");
+               Label error = new Label("Please ensure that the Number of Player should not greater than the Number of Points.");
+               error.setTextFill(Color.RED);
+               error.setFont(Font.font("Tahoma", FontWeight.LIGHT, 10));
+               error.setPrefWidth(600);
+               error.setWrapText(true);
+               grid.add(error, 0, 5, 3, 6);
+            }else{
             // start timer
             GameTimer gt = new GameTimer(m);
             System.out.println("Game Start!" + new Date());
@@ -79,7 +90,10 @@ public class startGUI {
             System.out.println(numEdge);
 
             grid.getScene().getWindow().hide();
+            
+            //display result
             ResultGUI.display(numEdge);
+            }
         });
     }
 

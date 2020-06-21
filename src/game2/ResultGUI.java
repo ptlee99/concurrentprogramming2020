@@ -24,21 +24,7 @@ public class ResultGUI {
         label.setText("Game Result: ");
         label.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         GridPane.setConstraints(label, 0, 0);
-        
-//        TextArea output = new TextArea();
-//        output.setPrefRowCount(result.size());
-//        output.setPrefColumnCount(100);
-//        output.setWrapText(true);
-//        output.setPrefWidth(150);
-//        GridPane.setConstraints(output, 0, 2);
-//
-//        String message = "";
-//
-//        for (int i = 0; i < result.size(); i++) {
-//            message = "P" + (i + 1) + " has created " + result.get(i) + " edges.\n";
-//            //output.setText(message);
-//            output.appendText(message+"\n");
-//        }
+       
         int loop = 1;
         for (int i = 0; i < result.size(); i++) {
             grid.add(new Label("P" + (i + 1) + " has created " + result.get(i) + " edges.\n"), 0, loop);
