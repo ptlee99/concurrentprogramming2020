@@ -12,7 +12,6 @@ import java.util.Set;
 
 import javafx.geometry.*;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Shadow;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
@@ -86,7 +85,7 @@ public class ResultGUI {
         grid.getChildren().addAll(scenetitle, btn);
         grid.setAlignment(Pos.CENTER);
         Scene scene = new Scene(grid);
-        scene.getStylesheets().add(NodeGameGUI.class.getResource("Result.css").toExternalForm());
+        scene.getStylesheets().add(ResultGUI.class.getResource("Result.css").toExternalForm());
         window.setScene(scene);
         window.showAndWait();
     }
