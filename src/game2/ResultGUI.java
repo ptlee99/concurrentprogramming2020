@@ -25,10 +25,6 @@ public class ResultGUI {
         label.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         GridPane.setConstraints(label, 0, 0);
 
-       
-
-
-
         int loop = 1;
         for (int i = 0; i < result.size(); i++) {
             grid.add(new Label("P" + (i + 1) + " has created " + result.get(i) + " edges.\n"), 0, loop);
