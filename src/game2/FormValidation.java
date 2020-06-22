@@ -5,8 +5,8 @@
  */
 package game2;
 
-import java.awt.Label;
-import java.awt.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
