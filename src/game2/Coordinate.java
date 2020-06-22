@@ -14,7 +14,7 @@ import java.util.Objects;
  * ** Overwrite methods
  * 
  * 
- * @author Lee Peh Ting
+ * @author User
  */
 public class Coordinate {
     private float x;

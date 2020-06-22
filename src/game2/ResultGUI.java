@@ -28,6 +28,7 @@ import javafx.scene.text.Text;
  * @author User
  */
 public class ResultGUI {
+
     private static GridPane grid;
 
     public static void display(ArrayList<Integer> result, List<Set<Edge>> playerEdge) {

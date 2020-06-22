@@ -111,9 +111,6 @@ public class Player implements Callable<EdgeList> {
         GameTimer gt = new GameTimer();
         while (attempt < 20 && !Thread.interrupted()) {
             if (gt.getIsTimeUp() == false) {
-                // System.out.println("SAVE ME");
-                // System.out.println("Attempt from run : " + attempt + " by " +
-                // Thread.currentThread().getName());
                 pickPoint();
             }
 

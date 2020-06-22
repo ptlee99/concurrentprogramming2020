@@ -26,15 +26,14 @@ public class Points {
     private final Set<Coordinate> pointSet  = Collections.synchronizedSet(new HashSet<>());
     
     public void createPoint(){
-       /*
-       By using Random Class, the boundary is set. 
+       /*By using Random Class, the boundary is set. 
        Thus, the X and Y will not out of Grid.
        */
        Random rand = new Random();
        x = rand.nextFloat()*MAX_X;
        x = (float)(Math.round(x*100.0)/300.0);
        y = rand.nextFloat()*MAX_Y;
-       y = (float)(Math.round(x*100.0)/300.0);
+       y = (float)(Math.round(y*100.0)/300.0);
        
        //Verify the overlap of the created point
        verifyPoint(x,y);

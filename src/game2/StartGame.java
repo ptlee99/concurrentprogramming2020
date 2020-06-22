@@ -17,7 +17,7 @@ import java.util.concurrent.Future;
  * @author User
  */
 public class StartGame {
-   int numPoints; // number of points
+    int numPoints; // number of points
     int gameTimer; // game timer
     int numThread; // number of thread
     ArrayList<Integer> numEdge = new ArrayList<>();
@@ -71,5 +71,5 @@ public class StartGame {
     
     public List<Set<Edge>> getEdge(){
         return this.groupEdge;
-    } 
+    }
 }
