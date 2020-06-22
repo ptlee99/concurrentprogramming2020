@@ -14,7 +14,6 @@ import java.util.TimerTask;
  * @author User
  */
 public class GameTimer{
-    private int m;
     private Timer timer;
     private boolean isTimeUp = false;
 
